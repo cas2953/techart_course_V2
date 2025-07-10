@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技應用服務高階課程</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter for body, Noto Serif TC for headings to add warmth -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Applying custom fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #374151; /* Dark gray text */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif TC', serif;
+            color: #1f2937; /* Even darker gray for headings */
+        }
+        /* Simple transition for interactive elements */
+        .smooth-transition {
+            transition: all 0.3s ease-in-out;
+        }
+        /* Gradient text for special headings - Orange theme */
+        .gradient-text {
+            background: linear-gradient(to right, #f97316, #a200ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Accordion styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        /* Style for selected course button */
+        .course-btn-selected {
+            background-color: #ffedd5 !important; /* orange-100 */
+            border-color: #f97316 !important; /* orange-500 */
+            color: #c2410c !important; /* orange-700 */
+            font-weight: 600;
+        }
+        /* Styles for the clipped instructor photos */
+        .instructor-photo-1 {
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+        }
+        .instructor-photo-2 {
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
+        }
+        .instructor-photo-3 {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200/50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Logo Image -->
+            <a href="#" class="block">
+                <!-- 將下方的 src 換成您的圖片路徑 -->
+                <img src="images/logo_main.png" alt="天工開物 Logo" class="h-10 w-auto">
+            </a>
+            <a href="#final-cta" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full smooth-transition shadow-lg shadow-orange-500/20">
+                立即報名
+            </a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Section 1: Hero -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/B001C018_231110FG.jpg');">
+                <div class="absolute inset-0 bg-black/50"></div>
+            </div>
+            <div class="relative z-10 px-6">
+                <h2 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
+                    解 鎖 A I 協 作 力 ， 定 義 事 業 新 未 來
+                </h2>
+                <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+                    <br>從創新視聽技術體驗到 AI 驅動的專案加速引擎<br>科技私教陪伴你在變革中搶佔先機
+                </p>
+                <a href="#highlights" class="bg-orange-500 text-white font-bold py-3 px-8 rounded-full text-lg smooth-transition hover:bg-orange-600 hover:scale-105 transform shadow-2xl">
+                    了解課程詳情
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 2: The Problem -->
+        <section id="problem" class="py-20 sm:py-28 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">身為決策者，您是否也面臨這些挑戰？</h2>
+                <p class="text-gray-600 mb-12 max-w-2xl mx-auto">我們理解您在AI浪潮下的資訊與知識焦慮<br>這門課將為您撥開迷霧看見事業成長的可能性</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Pain Point 1 -->
+                    <div class="bg-white p-8 rounded-2xl text-left transform hover:-translate-y-2 smooth-transition shadow-lg border border-gray-100">
+                        <svg class="w-12 h-12 mb-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159-1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" /></svg>
+                        <h3 class="text-xl font-bold mb-2">技術迷航</h3>
+                        <p class="text-gray-600">生成式AI、空間運算...<br>新技術層出不窮，卻不清楚落地應用的可能性？</p>
+                    </div>
+                    <!-- Pain Point 2 -->
+                    <div class="bg-white p-8 rounded-2xl text-left transform hover:-translate-y-2 smooth-transition shadow-lg border border-gray-100">
+                        <svg class="w-12 h-12 mb-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <h3 class="text-xl font-bold mb-2">領導困境</h3>
+                        <p class="text-gray-600">期待團隊導入 AI，但您無法掌握核心思維，難以有效領導與評估成效？</p>
+                    </div>
+                    <!-- Pain Point 3 -->
+                    <div class="bg-white p-8 rounded-2xl text-left transform hover:-translate-y-2 smooth-transition shadow-lg border border-gray-100">
+                        <svg class="w-12 h-12 mb-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" /></svg>
+                        <h3 class="text-xl font-bold mb-2">工具迷思</h3>
+                        <p class="text-gray-600">在海量的 AI 工具中迷失，花了時間卻無法有效整合，建立自己的工作流？</p>
+                    </div>
+                    <!-- Pain Point 4 -->
+                    <div class="bg-white p-8 rounded-2xl text-left transform hover:-translate-y-2 smooth-transition shadow-lg border border-gray-100">
+                        <svg class="w-12 h-12 mb-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" /></svg>
+                        <h3 class="text-xl font-bold mb-2">競爭焦慮</h3>
+                        <p class="text-gray-600">體悟到個人競爭力正逐漸被AI稀釋，擔心被會用AI的競爭者取代？</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Solution -->
+        <section id="solution" class="py-20 sm:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">這不只是知識技術的分享，更是一套<span class="gradient-text">轉化管理思維的實戰化操演</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- Value 1 -->
+                    <div class="border border-gray-200 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-3">【模組化課程】</h3>
+                        <p class="text-gray-600">自由組合六大核心模組，針對您的需求與痛點，打造最適合您的學習路徑。</p>
+                    </div>
+                    <!-- Value 2 -->
+                    <div class="border border-gray-200 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-3">【陪跑式實作】</h3>
+                        <p class="text-gray-600">不只聽理論，更要動手做。我們將帶領您實際操作，將所學知識轉化為您的即戰力。</p>
+                    </div>
+                    <!-- Value 3 -->
+                    <div class="border border-gray-200 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-3">【專屬化課表】</h3>
+                        <p class="text-gray-600">依據自身學習取線，彈性安排課表學習節奏，掌握您獨一無二的AI工作流。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Course Highlights -->
+        <section id="highlights" class="py-20 sm:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">課程核心內容一覽</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">我們精心設計了六大模組，層層遞進，構建您的科技領導力。</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Module 1 -->
+                    <div class="bg-white rounded-2xl p-6 flex items-start space-x-4 smooth-transition hover:shadow-xl hover:shadow-orange-500/10 border h-full">
+                        <div class="bg-orange-500/10 text-orange-600 p-3 rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-1.6-.8l-1.6-2.13a1 1 0 0 0-1.6 0L9.6 17.2A2 2 0 0 1 8 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">創新視聽技術體驗</h3>
+                            <p class="text-sm text-gray-500">課程時間：45分鐘<br>空間體驗設計的新疆野 (Apple Vision Pro與沉浸式視聽體驗)</p>
+                        </div>
+                    </div>
+                    <!-- Module 2 -->
+                    <div class="bg-white rounded-2xl p-6 flex items-start space-x-4 smooth-transition hover:shadow-xl hover:shadow-orange-500/10 border h-full">
+                        <div class="bg-orange-500/10 text-orange-600 p-3 rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">當互動設計遇上AI</h3>
+                            <p class="text-sm text-gray-500">課程時間：45分鐘<br>AI對設計產業工作流的影響與趨勢</p>
+                        </div>
+                    </div>
+                    <!-- Module 3 -->
+                    <div class="bg-white rounded-2xl p-6 flex items-start space-x-4 smooth-transition hover:shadow-xl hover:shadow-orange-500/10 border h-full">
+                        <div class="bg-orange-500/10 text-orange-600 p-3 rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l1.56.78"/><path d="M13.227 21.925a10 10 0 1 1 8.767-9.588"/><path d="m14 18 4-4 4 4"/><path d="M18 22v-8"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">快速提案驗證可行性快速</h3>
+                            <p class="text-sm text-gray-500">課程時間：120分鐘<br>借助AI工具產出你的MVP<br>Minimum Viable "Project"</p>
+                        </div>
+                    </div>
+                    <!-- Module 4 -->
+                    <div class="bg-white rounded-2xl p-6 flex items-start space-x-4 smooth-transition hover:shadow-xl hover:shadow-orange-500/10 border h-full">
+                        <div class="bg-orange-500/10 text-orange-600 p-3 rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">AI當你的第二大腦</h3>
+                            <p class="text-sm text-gray-500">課程時間：60分鐘<br>掌握關鍵AI協作思維，從紛亂的工具中梳理工作流</p>
+                        </div>
+                    </div>
+                    <!-- Module 5 -->
+                    <div class="bg-white rounded-2xl p-6 flex items-start space-x-4 smooth-transition hover:shadow-xl hover:shadow-orange-500/10 border h-full">
+                        <div class="bg-orange-500/10 text-orange-600 p-3 rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">超強個體工作術</h3>
+                            <p class="text-sm text-gray-500">課程時間：60分鐘<br>提升與時俱進的AI協作競爭力</p>
+                        </div>
+                    </div>
+                    <!-- Module 6 -->
+                    <div class="bg-white rounded-2xl p-6 flex items-start space-x-4 smooth-transition hover:shadow-xl hover:shadow-orange-500/10 border h-full">
+                        <div class="bg-orange-500/10 text-orange-600 p-3 rounded-full flex-shrink-0">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">打造跨域第二曲線</h3>
+                            <p class="text-sm text-gray-500">課程時間：45分鐘<br>開啟學習新領域的無限可能</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Instructor -->
+        <section id="instructor" class="py-20 sm:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <!-- NEW Instructor Photo Composition -->
+                    <div class="lg:w-1/2 w-full">
+                        <div class="relative flex h-80 -space-x-16">
+                            <!-- Photo 1 -->
+                            <div class="h-full w-2/3 bg-cover bg-center rounded-lg shadow-lg instructor-photo-1" 
+                                 style="background-image: url('images/apple.jpg'); 
+                                        /* 微調照片位置: X% Y%。50% 50% 為置中。*/
+                                        background-position: 50% 30%;">
+                            </div>
+                            <!-- Photo 2 -->
+                            <div class="h-full w-2/3 bg-cover bg-center rounded-lg shadow-lg instructor-photo-2" 
+                                 style="background-image: url('images/sean.jpg');
+                                        /* 微調照片位置: X% Y%。50% 50% 為置中。*/
+                                        background-position: 250% 60%;">
+                            </div>
+                            <!-- Photo 3 -->
+                            <div class="h-full w-2/3 bg-cover bg-center rounded-lg shadow-lg instructor-photo-3" 
+                                 style="background-image: url('images/chen.jpg');
+                                        /* 微調照片位置: X% Y%。50% 60% 為置中。*/
+                                        background-position: 50% 10%;">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Instructor Description -->
+                    <div class="lg:w-1/2 w-full">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-2">天工開物跨域整合團隊</h2>
+                        <p class="text-orange-600 font-semibold text-lg mb-4">種子講師群</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            天工開物是一群熱愛科技、擅長溝通的跨領域專家，背景涵蓋互動設計、使用者體驗、軟體工程與教育訓練。我們不只懂技術，更懂如何將複雜的科技轉化為可落地、可實操的解決方案。
+                        </p>
+                        <div class="border-l-4 border-orange-500 pl-6 italic text-gray-500">
+                            <p>"我們將乘著科技的浪，與您一同引領AI協作的潮流。"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 7 & 8: FAQ and Contact Sidebar -->
+        <section id="faq-contact" class="py-20 sm:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">課程資訊與諮詢</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">還有其他問題嗎？或想直接與我們聊聊您的需求？</p>
+                </div>
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                    <!-- FAQ Column -->
+                    <div class="lg:w-2/3">
+                        <h3 class="text-2xl font-bold mb-6">常見問題</h3>
+                        <div class="space-y-4">
+                            <!-- FAQ Item 1 -->
+                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                                <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
+                                    <span>我沒有任何技術背景，適合這門課嗎？</span>
+                                    <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-5 pt-0 text-gray-600">完全沒問題！這門課的設計初衷就是為非技術背景的管理者與專業人士打造。我們不談艱澀的程式碼，而是專注於「應用思維」與「工作流程」，讓您能從策略高度駕馭科技應用。</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item 2 -->
+                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                                <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
+                                    <span>課程將會如何進行？</span>
+                                    <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-5 pt-0 text-gray-600">本課程的師生比將採1(師)對1(生)或多(師)對1(生)方式進行，若有團體課程或到府課程等需求，歡迎向課程顧問進行一對一諮詢，我們將為您的需求客製與報價。</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item 3 -->
+                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                                <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
+                                    <span>課程的時間與地點？</span>
+                                    <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-5 pt-0 text-gray-600">課程為實體工作坊，建議自備使用熟悉的筆電或行動裝置，課程講師將引導您實際操演。<br><br>時間：每堂課建議以120分鐘為限，通話或來信後，將由專人與您接洽排課。<br>地點：台北市大安區仁愛路三段17號2樓。</p>
+                                </div>
+                            </div>
+                            <!-- FAQ Item 4 -->
+                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                                <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
+                                    <span>課程如何計費？</span>
+                                    <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <p class="p-5 pt-0 text-gray-600">課程採模組化課表純預約制，依據實際上課時間來收費。<br>Prerun階段每小時 1,200 NTD，不足半小時以半小時計。<br>報名時，您可以向專員說希望體驗的核心內容，專員將為您安排適合課表。<br><br>P.S.最晚需在課程前一週預約，若要取消，最晚需在課程前2天來電取消。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Sidebar Column -->
+                    <div class="lg:w-1/3">
+                         <div class="sticky top-28 bg-orange-50 border border-orange-200 p-8 rounded-2xl shadow-lg">
+                            <h3 class="text-2xl font-bold text-gray-800">預約一對一諮詢</h3>
+                            <p class="text-gray-600 mt-2 mb-6">讓我們了解您的需求，為您量身打造專屬的學習藍圖。</p>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">您的姓名</label>
+                                    <input type="text" name="name" id="name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">聯絡電話</label>
+                                    <input type="tel" name="phone" id="phone" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">感興趣的課程 (可複選)</label>
+                                    <div id="course-buttons-container" class="grid grid-cols-2 gap-2 mt-2">
+                                        <!-- Course buttons will be dynamically inserted here by JS -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="button" id="submit-consultation" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-md smooth-transition">
+                                        送出諮詢
+                                    </button>
+                                </div>
+                            </div>
+                             <div class="mt-6 pt-6 border-t border-orange-200">
+                                 <p class="text-sm text-gray-600">或透過以下方式聯繫：</p>
+                                 <ul class="mt-3 space-y-2 text-gray-700">
+                                     <li class="flex items-center text-sm">
+                                         <svg class="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
+                                         <span>(02) 2711-1153</span>
+                                     </li>
+                                     <li class="flex items-center text-sm">
+                                         <svg class="w-4 h-4 text-orange-600 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" /></svg>
+                                         <span>info@techartgroup.com</span>
+                                     </li>
+                                 </ul>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Final CTA -->
+        <section id="final-cta" class="py-20 sm:py-28 bg-orange-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">為您的領導力，做出最有價值的投資</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-8">下一個世代的競爭已經開始，您的位置在哪裡？<br>AI的浪潮下，您將乘風破浪或隨波逐流？</p>
+                <div class="mb-8">
+                    <span class="text-4xl font-bold gradient-text">NT$ 1,200 / 小時</span>
+                    <span class="text-gray-600 ml-2"><br>Prerun階段限定早鳥價 </span>
+                </div>
+                <a href="#faq-contact" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full text-xl smooth-transition shadow-lg shadow-orange-500/30 transform hover:scale-105">
+                    立即預約諮詢
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 天工開物股份有限公司. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- FAQ Accordion Logic ---
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('svg');
+                    const isExpanded = content.style.maxHeight;
+
+                    // Close all accordions
+                    document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                    document.querySelectorAll('.accordion-header svg').forEach(i => i.classList.remove('rotate-180'));
+
+                    // Open the clicked one if it was closed
+                    if (!isExpanded) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // --- Consultation Form Logic ---
+            const courses = [
+                { name: '創新視聽技術體驗', icon: `<svg class="w-5 h-5 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-1.6-.8l-1.6-2.13a1 1 0 0 0-1.6 0L9.6 17.2A2 2 0 0 1 8 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/></svg>` },
+                { name: '當互動設計遇上AI', icon: `<svg class="w-5 h-5 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg>` },
+                { name: '快速提案驗證可行性', icon: `<svg class="w-5 h-5 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l1.56.78"/><path d="M13.227 21.925a10 10 0 1 1 8.767-9.588"/><path d="m14 18 4-4 4 4"/><path d="M18 22v-8"/></svg>` },
+                { name: 'AI當你的第二大腦', icon: `<svg class="w-5 h-5 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></svg>` },
+                { name: '超強個體工作術', icon: `<svg class="w-5 h-5 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>` },
+                { name: '打造跨域第二曲線', icon: `<svg class="w-5 h-5 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7"/></svg>` }
+            ];
+
+            const container = document.getElementById('course-buttons-container');
+            courses.forEach(course => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.dataset.courseName = course.name;
+                button.className = 'course-btn flex items-center justify-center text-xs text-gray-600 bg-white border border-gray-300 rounded-md p-2 text-center smooth-transition hover:bg-orange-50';
+                button.innerHTML = `${course.icon} <span class="truncate">${course.name}</span>`;
+                button.addEventListener('click', () => {
+                    button.classList.toggle('course-btn-selected');
+                });
+                container.appendChild(button);
+            });
+
+            const submitBtn = document.getElementById('submit-consultation');
+            submitBtn.addEventListener('click', function() {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+
+                if (!name) {
+                    alert('請填寫您的姓名');
+                    return;
+                }
+                
+                if (!phone) {
+                    alert('請填寫您的聯絡電話');
+                    return;
+                }
+
+                const selectedButtons = document.querySelectorAll('.course-btn-selected');
+                if (selectedButtons.length === 0) {
+                    alert('請至少選擇一門感興趣的課程');
+                    return;
+                }
+
+                const selectedCourses = Array.from(selectedButtons).map(btn => btn.dataset.courseName);
+                
+                const now = new Date();
+                const timestamp = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
+                
+                const recipient = 'info@techartgroup.com';
+                const subject = `[科技私教課程諮詢]${name} 時間${timestamp}`;
+                const body = `你好，\n\n我是 ${name}，\n對科技私教的「${selectedCourses.join('」、「')}」有興趣！\n請與我聯繫~\n\n聯絡電話：${phone}`;
+                
+                const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoLink;
+            });
+        });
+    </script>
+
+</body>
+</html>
