@@ -47,15 +47,28 @@
             color: #c2410c !important; /* orange-700 */
             font-weight: 600;
         }
-        /* Styles for the clipped instructor photos */
-        .instructor-photo-1 {
-            clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+        /* Styles for instructor carousel (Fade In/Out) */
+        .instructor-slide {
+            transition: opacity 0.7s ease-in-out;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* 24px */
         }
-        .instructor-photo-2 {
-            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
+        /* Responsive layout for slides */
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .instructor-slide {
+                flex-direction: row;
+                gap: 3rem; /* 48px */
+            }
         }
-        .instructor-photo-3 {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+        .instructor-slide.active {
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -67,7 +80,7 @@
             <!-- Logo Image -->
             <a href="#" class="block">
                 <!-- 將下方的 src 換成您的圖片路徑 -->
-                <img src="./images/logo_main.png" alt="天工開物 Logo" class="h-10 w-auto">
+                <img src="./images/logo_main.png" alt="天工開物 Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/160x40/f97316/white?text=天工開物&font=noto-sans-tc';">
             </a>
             <a href="#final-cta" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full smooth-transition shadow-lg shadow-orange-500/20">
                 立即報名
@@ -227,50 +240,28 @@
             </div>
         </section>
 
-        <!-- Section 6: Instructor -->
-        <section id="instructor" class="py-20 sm:py-28 bg-white">
+        <!-- Section 6: Instructor (MODIFIED) -->
+        <section id="instructor" class="py-20 sm:py-28 bg-white overflow-hidden">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-12">
-                    <!-- NEW Instructor Photo Composition -->
-                    <div class="lg:w-1/2 w-full">
-                        <div class="relative flex h-80 -space-x-16">
-                            <!-- Photo 1 -->
-                            <div class="h-full w-2/3 bg-cover bg-center rounded-lg shadow-lg instructor-photo-1" 
-                                 style="background-image: url('./images/apple.jpg'); 
-                                        /* 微調照片位置: X% Y%。50% 50% 為置中。*/
-                                        background-position: 50% 30%;">
-                            </div>
-                            <!-- Photo 2 -->
-                            <div class="h-full w-2/3 bg-cover bg-center rounded-lg shadow-lg instructor-photo-2" 
-                                 style="background-image: url('./images/sean.jpg');
-                                        /* 微調照片位置: X% Y%。50% 50% 為置中。*/
-                                        background-position: 250% 60%;">
-                            </div>
-                            <!-- Photo 3 -->
-                            <div class="h-full w-2/3 bg-cover bg-center rounded-lg shadow-lg instructor-photo-3" 
-                                 style="background-image: url('./images/chen.jpg');
-                                        /* 微調照片位置: X% Y%。50% 60% 為置中。*/
-                                        background-position: 50% 10%;">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Instructor Description -->
-                    <div class="lg:w-1/2 w-full">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-2">天工開物跨域整合團隊</h2>
-                        <p class="text-orange-600 font-semibold text-lg mb-4">種子講師群</p>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            天工開物是一群熱愛科技、擅長溝通的跨領域專家，背景涵蓋互動設計、使用者體驗、軟體工程與教育訓練。我們不只懂技術，更懂如何將複雜的科技轉化為可落地、可實操的解決方案。
-                        </p>
-                        <div class="border-l-4 border-orange-500 pl-6 italic text-gray-500">
-                            <p>"我們將乘著科技的浪，與您一同引領AI協作的潮流。"</p>
-                        </div>
-                    </div>
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-2">天工開物跨域整合團隊</h2>
+                    <p class="text-orange-600 font-semibold text-lg">種子講師群</p>
+                </div>
+
+                <!-- Instructor Carousel Container -->
+                <div id="instructor-carousel" class="relative min-h-[600px] md:min-h-[520px] lg:min-h-[500px]">
+                    <!-- Slides will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Navigation Dots -->
+                <div id="instructor-dots" class="flex justify-center space-x-3 mt-8">
+                    <!-- Dots will be inserted here by JavaScript -->
                 </div>
             </div>
         </section>
         
         <!-- Section 7 & 8: FAQ and Contact Sidebar -->
-        <section id="faq-contact" class="py-20 sm:py-28 bg-white">
+        <section id="faq-contact" class="py-20 sm:py-28 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">課程資訊與諮詢</h2>
@@ -282,7 +273,7 @@
                         <h3 class="text-2xl font-bold mb-6">常見問題</h3>
                         <div class="space-y-4">
                             <!-- FAQ Item 1 -->
-                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="bg-white rounded-lg border border-gray-200">
                                 <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
                                     <span>我沒有任何技術背景，適合這門課嗎？</span>
                                     <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -292,7 +283,7 @@
                                 </div>
                             </div>
                             <!-- FAQ Item 2 -->
-                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="bg-white rounded-lg border border-gray-200">
                                 <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
                                     <span>課程將會如何進行？</span>
                                     <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -302,7 +293,7 @@
                                 </div>
                             </div>
                             <!-- FAQ Item 3 -->
-                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="bg-white rounded-lg border border-gray-200">
                                 <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
                                     <span>課程的時間與地點？</span>
                                     <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -312,7 +303,7 @@
                                 </div>
                             </div>
                             <!-- FAQ Item 4 -->
-                            <div class="bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="bg-white rounded-lg border border-gray-200">
                                 <button class="accordion-header flex justify-between items-center w-full p-5 text-left font-semibold">
                                     <span>課程如何計費？</span>
                                     <svg class="w-5 h-5 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -394,22 +385,152 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // --- Instructor Carousel Logic ---
+            const instructors = [
+                {
+                    name: '杜建興',
+                    title: '總經理',
+                    description: '#敏捷管理 #創意提案 #系統規劃 #策展思維 ',
+                    quote: 'AI是科技與創意的交會的奇點，在生活中設計體驗，事業上領航未來。',
+                    image: './images/tu.jpg', // 使用您的原圖
+                    position: '50% 30%' // X% Y% (水平, 垂直)
+                },
+                {
+                    name: '陳宏錡',
+                    title: '科技趨勢研究員',
+                    description: '#AI協作 #趨勢分析 #跨域整合 #科學教育推廣',
+                    quote: '知識與分享，搭著科技的順風車，作個當代的知識說書人',
+                    image: './images/chen.jpg', // 使用您的原圖
+                    position: '50% 10%' // X% Y% (水平, 垂直)
+                },
+                {
+                    name: '黃文郁',
+                    title: '組織行政經理',
+                    description: '#專案管理 #產品資源管理 #流程優化 #企業文化推動',
+                    quote: '管理流程的是雙手，連結人心的是初心；行政不是後勤，而是策略的推進器。',
+                    image: './images/66.jpg', // 使用您的原圖
+                    position: '50% 60%' // X% Y% (水平, 垂直)
+                },
+                {
+                    name: '楊睿謙',
+                    title: 'AI影像整合設計師',
+                    description: '#AIDesign #數位藝術家 #視覺科技',
+                    quote: '在像素與RGB之間，捕捉創意的心跳；用 AI 編織光影，讓想像立體成真。',
+                    image: './images/ray.jpg', // 暫時重複使用圖片，請替換
+                    position: '50% 50%' // 預設置中
+                },
+                {
+                    name: '高儀蘋',
+                    title: '樂齡終身學習顧問',
+                    description: '#第三人生 #銀髮教育 #終身學習',
+                    quote: '相信科技能跨越年齡與距離，陪銀髮族與孩子一起，看見更大的世界、參與這個時代。',
+                    image: './images/apple.jpg', // 暫時重複使用圖片，請替換
+                    position: '50% 50%' // 預設置中
+                }
+            ];
+
+            const carouselContainer = document.getElementById('instructor-carousel');
+            const dotsContainer = document.getElementById('instructor-dots');
+            let currentInstructorIndex = 0;
+            let intervalId;
+
+            // 動態生成講師卡片和導覽圓點
+            instructors.forEach((instructor, index) => {
+                // Create Slide
+                const slide = document.createElement('div');
+                slide.className = 'instructor-slide absolute inset-0 w-full h-full';
+                slide.innerHTML = `
+                    <div class="lg:w-1/3 w-2/3 mx-auto flex-shrink-0">
+                        <div class="aspect-[3/4] w-full bg-cover bg-center rounded-2xl shadow-xl" style="background-image: url('${instructor.image}'); background-position: ${instructor.position};" onerror="this.onerror=null;this.style.backgroundImage='url(https://placehold.co/600x800/e2e8f0/94a3b8?text=圖片載入失敗)'"></div>
+                    </div>
+                    <div class="lg:w-2/3 w-full text-center lg:text-left">
+                        <h3 class="text-3xl font-bold mb-1">${instructor.name}</h3>
+                        <p class="text-orange-600 font-semibold text-md mb-4">${instructor.title}</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            ${instructor.description}
+                        </p>
+                        <div class="border-l-4 border-orange-500 pl-6 italic text-gray-500">
+                            <p>"${instructor.quote}"</p>
+                        </div>
+                    </div>
+                `;
+                carouselContainer.appendChild(slide);
+
+                // Create Dot
+                const dot = document.createElement('button');
+                dot.className = 'w-3 h-3 rounded-full smooth-transition';
+                dot.addEventListener('click', () => {
+                    showInstructor(index);
+                    resetInterval();
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const slides = document.querySelectorAll('.instructor-slide');
+            const dots = document.querySelectorAll('#instructor-dots button');
+
+            function showInstructor(index) {
+                // Hide all slides by removing 'active' class
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                // Deactivate all dots
+                dots.forEach(dot => {
+                    dot.classList.remove('bg-orange-500');
+                    dot.classList.add('bg-gray-300');
+                });
+
+                // Show the target slide by adding 'active' class
+                slides[index].classList.add('active');
+                
+                // Activate the target dot
+                dots[index].classList.add('bg-orange-500');
+                dots[index].classList.remove('bg-gray-300');
+
+                currentInstructorIndex = index;
+            }
+
+            function nextInstructor() {
+                const nextIndex = (currentInstructorIndex + 1) % instructors.length;
+                showInstructor(nextIndex);
+            }
+            
+            function startInterval() {
+                intervalId = setInterval(nextInstructor, 5000); // 切換間隔 5 秒
+            }
+
+            function resetInterval() {
+                clearInterval(intervalId);
+                startInterval();
+            }
+
+            // Initial setup
+            showInstructor(0);
+            startInterval();
+
             // --- FAQ Accordion Logic ---
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', function () {
                     const content = this.nextElementSibling;
                     const icon = this.querySelector('svg');
-                    const isExpanded = content.style.maxHeight;
+                    const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-                    // Close all accordions
-                    document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
-                    document.querySelectorAll('.accordion-header svg').forEach(i => i.classList.remove('rotate-180'));
+                    // Close all other accordions
+                    document.querySelectorAll('.accordion-content').forEach((c, i) => {
+                        if (c !== content) {
+                            c.style.maxHeight = null;
+                            accordionHeaders[i].querySelector('svg').classList.remove('rotate-180');
+                        }
+                    });
 
-                    // Open the clicked one if it was closed
+                    // Toggle the clicked one
                     if (!isExpanded) {
                         content.style.maxHeight = content.scrollHeight + "px";
                         icon.classList.add('rotate-180');
+                    } else {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
                     }
                 });
             });
@@ -425,52 +546,56 @@
             ];
 
             const container = document.getElementById('course-buttons-container');
-            courses.forEach(course => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.dataset.courseName = course.name;
-                button.className = 'course-btn flex items-center justify-center text-xs text-gray-600 bg-white border border-gray-300 rounded-md p-2 text-center smooth-transition hover:bg-orange-50';
-                button.innerHTML = `${course.icon} <span class="truncate">${course.name}</span>`;
-                button.addEventListener('click', () => {
-                    button.classList.toggle('course-btn-selected');
+            if (container) {
+                courses.forEach(course => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.dataset.courseName = course.name;
+                    button.className = 'course-btn flex items-center justify-center text-xs text-gray-600 bg-white border border-gray-300 rounded-md p-2 text-center smooth-transition hover:bg-orange-50';
+                    button.innerHTML = `${course.icon} <span class="truncate">${course.name}</span>`;
+                    button.addEventListener('click', () => {
+                        button.classList.toggle('course-btn-selected');
+                    });
+                    container.appendChild(button);
                 });
-                container.appendChild(button);
-            });
+            }
 
             const submitBtn = document.getElementById('submit-consultation');
-            submitBtn.addEventListener('click', function() {
-                const name = document.getElementById('name').value.trim();
-                const phone = document.getElementById('phone').value.trim();
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function() {
+                    const name = document.getElementById('name').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
 
-                if (!name) {
-                    alert('請填寫您的姓名');
-                    return;
-                }
-                
-                if (!phone) {
-                    alert('請填寫您的聯絡電話');
-                    return;
-                }
+                    if (!name) {
+                        alert('請填寫您的姓名');
+                        return;
+                    }
+                    
+                    if (!phone) {
+                        alert('請填寫您的聯絡電話');
+                        return;
+                    }
 
-                const selectedButtons = document.querySelectorAll('.course-btn-selected');
-                if (selectedButtons.length === 0) {
-                    alert('請至少選擇一門感興趣的課程');
-                    return;
-                }
+                    const selectedButtons = document.querySelectorAll('.course-btn-selected');
+                    if (selectedButtons.length === 0) {
+                        alert('請至少選擇一門感興趣的課程');
+                        return;
+                    }
 
-                const selectedCourses = Array.from(selectedButtons).map(btn => btn.dataset.courseName);
-                
-                const now = new Date();
-                const timestamp = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
-                
-                const recipient = 'info@techartgroup.com';
-                const subject = `[科技私教課程諮詢]${name} 時間${timestamp}`;
-                const body = `你好，\n\n我是 ${name}，\n對科技私教的「${selectedCourses.join('」、「')}」有興趣！\n請與我聯繫~\n\n聯絡電話：${phone}`;
-                
-                const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                window.location.href = mailtoLink;
-            });
+                    const selectedCourses = Array.from(selectedButtons).map(btn => btn.dataset.courseName);
+                    
+                    const now = new Date();
+                    const timestamp = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}`;
+                    
+                    const recipient = 'info@techartgroup.com';
+                    const subject = `[科技私教課程諮詢]${name} 時間${timestamp}`;
+                    const body = `你好，\n\n我是 ${name}，\n對科技私教的「${selectedCourses.join('」、「')}」有興趣！\n請與我聯繫~\n\n聯絡電話：${phone}`;
+                    
+                    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    window.location.href = mailtoLink;
+                });
+            }
         });
     </script>
 
